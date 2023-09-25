@@ -32,6 +32,7 @@ class Deploy extends Command
     ) {
         $this->addExampleData = $addExampleData;
         $this->logger = $logger;
+        parent::__construct();
     }
 
     /**
