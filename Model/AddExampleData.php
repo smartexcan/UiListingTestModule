@@ -63,13 +63,10 @@ class AddExampleData
     {
         $groups = [
             [
-                GroupInterface::GROUP_ID => 1,
                 GroupInterface::NAME => 'Group 1'
             ], [
-                GroupInterface::GROUP_ID => 2,
                 GroupInterface::NAME => 'Group 2'
             ], [
-                GroupInterface::GROUP_ID => 3,
                 GroupInterface::NAME => 'Group 3'
             ]
         ];
@@ -107,12 +104,12 @@ class AddExampleData
         ];
 
         foreach ($groups as $data) {
-            $group = $this->groupFactory->create(['data' => $data]);
+            $group = $this->groupFactory->create()->setData($data);
             $this->groupRepository->save($group);
         }
 
         foreach ($items as $data) {
-            $item = $this->itemFactory->create(['data' => $data]);
+            $item = $this->itemFactory->create()->setData($data);
             $this->itemRepository->save($item);
         }
     }
