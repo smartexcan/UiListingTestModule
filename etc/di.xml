@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Author\Example\Api\GroupRepositoryInterface" type="Author\Example\Model\Group\Repository"/>
+    <preference for="Author\Example\Api\ItemRepositoryInterface" type="Author\Example\Model\Item\Repository"/>
+    <preference for="Author\Example\Api\Data\GroupInterface" type="Author\Example\Model\Group"/>
+    <preference for="Author\Example\Api\Data\ItemInterface" type="Author\Example\Model\Item"/>
+    <preference for="Author\Example\Api\Data\GroupSearchResultsInterface" type="Author\Example\Model\Group\SearchResults"/>
+    <preference for="Author\Example\Api\Data\ItemSearchResultsInterface" type="Author\Example\Model\Item\SearchResults"/>
+
+    <virtualType name="Author\Example\Model\ResourceModel\Item\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">example_item</argument>
+            <argument name="resourceModel" xsi:type="string">Author\Example\Model\ResourceModel\Item</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="author_example_item_listing_data_source" xsi:type="string">Author\Example\Model\ResourceModel\Item\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="authorExampleDataDeploy" xsi:type="object">Author\Example\Console\Command\Deploy</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

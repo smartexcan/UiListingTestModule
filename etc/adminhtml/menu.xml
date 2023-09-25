@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Author_Example::example" title="Example" translate="title" module="Author_Example" sortOrder="999" action="authorexample/item" resource="Author_Example::index" dependsOnModule="Author_Example"/>
+    </menu>
+</config>

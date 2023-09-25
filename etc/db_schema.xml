@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="example_group" resource="default" engine="innodb" comment="Example Group Table">
+        <column xsi:type="int" name="group_id" unsigned="true" nullable="false" identity="true"
+                comment="Group ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255"
+                comment="Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="group_id"/>
+        </constraint>
+    </table>
+
+    <table name="example_item" resource="default" engine="innodb" comment="Example Item Table">
+        <column xsi:type="int" name="item_id" unsigned="true" nullable="false" identity="true"
+                comment="Item ID"/>
+        <column xsi:type="int" name="group_id" unsigned="true" nullable="false" identity="false"
+                comment="Group ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255"
+                comment="Name"/>
+        <column xsi:type="varchar" name="status" nullable="false" length="100"
+                comment="Status"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="item_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="EXAMPLE_ITEM_GROUP_ID_EXAMPLE_GROUP_GROUP_ID"
+                    table="example_item" column="group_id"
+                    referenceTable="example_group" referenceColumn="group_id"
+                    onDelete="CASCADE"/>
+    </table>
+</schema>
